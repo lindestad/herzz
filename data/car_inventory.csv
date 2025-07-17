@@ -1,0 +1,21 @@
+car_id,make,model,year,daily_rate,location_id,mileage,fuel_type
+C001,Toyota,Camry,2022,45.00,LOC001,15000,Gasoline
+C002,Honda,Civic,2021,40.00,LOC001,22000,Gasoline
+C003,Ford,Mustang,2023,75.00,LOC005,5000,Gasoline
+C004,Chevrolet,Malibu,2022,50.00,LOC002,18000,Gasoline
+C005,Nissan,Altima,2021,42.00,LOC003,25000,Gasoline
+C006,BMW,320i,2023,85.00,LOC005,8000,Gasoline
+C007,Mercedes,C-Class,2022,90.00,LOC005,12000,Gasoline
+C008,Audi,A4,2023,88.00,LOC005,6000,Gasoline
+C009,Tesla,Model 3,2023,95.00,LOC002,3000,Electric
+C010,Toyota,Prius,2022,48.00,LOC001,20000,Hybrid
+C011,Honda,Accord,2021,52.00,LOC003,28000,Gasoline
+C012,Ford,Explorer,2022,65.00,LOC004,16000,Gasoline
+C013,Chevrolet,Equinox,2021,55.00,LOC004,32000,Gasoline
+C014,Nissan,Rogue,2022,58.00,LOC002,14000,Gasoline
+C015,Jeep,Grand Cherokee,2023,70.00,LOC004,9000,Gasoline
+C016,Subaru,Outback,2022,60.00,LOC003,19000,Gasoline
+C017,Mazda,CX-5,2021,56.00,LOC001,24000,Gasoline
+C018,Hyundai,Elantra,2022,38.00,LOC001,21000,Gasoline
+C019,Kia,Optima,2021,43.00,LOC003,26000,Gasoline
+C020,Volkswagen,Jetta,2022,47.00,LOC002,17000,Gasoline
