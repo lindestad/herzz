@@ -1,0 +1,67 @@
+[
+  {
+    "location_id": "LOC001",
+    "name": "Downtown Auto Rental",
+    "address": "123 Main Street",
+    "city": "San Francisco",
+    "state": "CA",
+    "zip_code": "94105",
+    "phone": "415-555-0100",
+    "manager": "Sarah Johnson",
+    "operating_hours": "Mon-Fri: 8AM-8PM, Sat-Sun: 9AM-6PM",
+    "car_capacity": 50,
+    "current_inventory": 32
+  },
+  {
+    "location_id": "LOC002",
+    "name": "Airport Car Center",
+    "address": "San Francisco International Airport, Terminal 1",
+    "city": "San Francisco",
+    "state": "CA",
+    "zip_code": "94128",
+    "phone": "415-555-0200",
+    "manager": "Mike Chen",
+    "operating_hours": "24/7",
+    "car_capacity": 100,
+    "current_inventory": 78
+  },
+  {
+    "location_id": "LOC003",
+    "name": "Silicon Valley Express",
+    "address": "456 Tech Drive",
+    "city": "Palo Alto",
+    "state": "CA",
+    "zip_code": "94301",
+    "phone": "650-555-0300",
+    "manager": "Lisa Rodriguez",
+    "operating_hours": "Mon-Fri: 7AM-9PM, Sat-Sun: 8AM-7PM",
+    "car_capacity": 75,
+    "current_inventory": 45
+  },
+  {
+    "location_id": "LOC004",
+    "name": "Bay Area Budget Rentals",
+    "address": "789 Economy Lane",
+    "city": "Oakland",
+    "state": "CA",
+    "zip_code": "94607",
+    "phone": "510-555-0400",
+    "manager": "David Park",
+    "operating_hours": "Mon-Sat: 8AM-7PM, Sun: 10AM-5PM",
+    "car_capacity": 40,
+    "current_inventory": 28
+  },
+  {
+    "location_id": "LOC005",
+    "name": "Luxury Car Collection",
+    "address": "321 Premium Boulevard",
+    "city": "Beverly Hills",
+    "state": "CA",
+    "zip_code": "90210",
+    "phone": "310-555-0500",
+    "manager": "Emma Thompson",
+    "operating_hours": "Mon-Fri: 9AM-7PM, Sat: 10AM-6PM, Sun: Closed",
+    "car_capacity": 25,
+    "current_inventory": 18
+  }
+]

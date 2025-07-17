@@ -1,0 +1,10 @@
+# Production dependencies
+# (This project uses only Python standard library for simplicity)
+
+# Development dependencies (optional)
+flake8>=6.0.0
+black>=23.0.0
+isort>=5.12.0
+pylint>=2.17.0
+mypy>=1.5.0
+bandit>=1.7.0
