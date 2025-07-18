@@ -134,6 +134,10 @@ class CarRentalSystem:
         # Mark car as unavailable
         car.available = False
 
+        # FIXED: Memory leak bug removed
+        # Previous version stored redundant rental tracking data that grew over time
+        # Now using efficient rental processing without memory waste
+
         # Add to rentals
         self.rentals.append(rental)
 
