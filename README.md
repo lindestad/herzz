@@ -1,10 +1,12 @@
 # HERZZ Car Rental System - Git Training Workshop
 
-## 🚗 Project Overview
+**HERZZ**: **H**euristic **E**ngine for **R**ental **Z**one **Z**oning
 
-Welcome to the HERZZ Car Rental System! This is a Python-based car rental management system designed specifically for Git training workshops. The system simulates real-world car rental operations and provides a practical environment for learning Git concepts, workflows, and collaboration techniques.
+## Project Overview
 
-## 📋 Features
+The HERZZ Car Rental System is a Python-based car rental management system designed specifically for Git training workshops. The system simulates real-world car rental operations and provides a practical environment for learning Git concepts, workflows, and collaboration techniques.
+
+## Features
 
 - **Car Management**: Add, track, and manage rental car inventory
 - **Customer Management**: Handle customer registration and information
@@ -14,7 +16,7 @@ Welcome to the HERZZ Car Rental System! This is a Python-based car rental manage
 - **Comprehensive Testing**: Unit tests for all major components
 - **CI/CD Pipeline**: GitHub Actions workflow for automated testing and code quality
 
-## 🏗️ Project Structure
+## Project Structure
 
 ```
 herzz/
@@ -32,7 +34,7 @@ herzz/
 └── README.md              # This file
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 - Python 3.8 or higher
@@ -51,7 +53,7 @@ python car_rental.py
 python test_car_rental.py
 ```
 
-## 🎓 Git Training Exercises
+## Git Training Exercises
 
 This repository is structured to provide hands-on experience with various Git concepts. The exercises are designed to be completed in order, building upon previous knowledge.
 
@@ -171,7 +173,7 @@ git format-patch HEAD~2
 git bisect start
 ```
 
-## 🔧 Development Setup
+## Development Setup
 
 ### Installing Development Dependencies
 ```bash
@@ -195,7 +197,7 @@ mypy *.py
 bandit -r .
 ```
 
-## 🧪 Testing
+## Testing
 
 The project includes comprehensive unit tests to ensure code quality and functionality.
 
@@ -207,7 +209,7 @@ python test_car_rental.py
 python test_car_rental.py -v
 ```
 
-## 📊 Sample Data
+## Sample Data
 
 The repository includes sample data to simulate a real car rental business:
 
@@ -215,7 +217,7 @@ The repository includes sample data to simulate a real car rental business:
 - **20 Cars**: Various makes, models, and price points
 - **10 Customers**: Sample customer database
 
-## 🔄 CI/CD Pipeline
+## CI/CD Pipeline
 
 The repository includes a GitHub Actions workflow that automatically:
 
@@ -226,7 +228,7 @@ The repository includes a GitHub Actions workflow that automatically:
 - Runs security scanning with bandit
 - Executes type checking with mypy
 
-## 🐛 Intentional Issues for Learning
+## Intentional Issues for Learning
 
 The repository contains intentional issues in different branches to facilitate learning:
 
@@ -240,7 +242,7 @@ The repository contains intentional issues in different branches to facilitate l
 - **Location**: `car_rental.py` in the rental processing
 - **Learning Goal**: Understand how bugs can exist in production code
 
-## 📚 Learning Resources
+## Learning Resources
 
 ### Git Commands Quick Reference
 
@@ -264,7 +266,7 @@ The repository contains intentional issues in different branches to facilitate l
 5. **Documentation**: Clear README and inline documentation
 6. **CI/CD**: Automated testing and quality checks
 
-## 🤝 Contributing
+## Contributing
 
 This project is designed for educational purposes. When completing exercises:
 
@@ -274,7 +276,7 @@ This project is designed for educational purposes. When completing exercises:
 4. Follow the established code style
 5. Document any new features or changes
 
-## 📝 Exercise Solutions
+## Exercise Solutions
 
 ### Common Patterns and Solutions
 
@@ -302,19 +304,19 @@ git rebase -i HEAD~3
 # Save and exit
 ```
 
-## 🏆 Learning Objectives
+## Learning Objectives
 
 By completing these exercises, you will learn:
 
-- ✅ Basic Git commands and repository management
-- ✅ Branching strategies and workflows
-- ✅ Merge conflict identification and resolution
-- ✅ Remote repository collaboration
-- ✅ Advanced Git operations and techniques
-- ✅ Best practices for version control
-- ✅ CI/CD pipeline integration with Git workflows
+- Basic Git commands and repository management
+- Branching strategies and workflows
+- Merge conflict identification and resolution
+- Remote repository collaboration
+- Advanced Git operations and techniques
+- Best practices for version control
+- CI/CD pipeline integration with Git workflows
 
-## 🆘 Getting Help
+## Getting Help
 
 If you encounter issues during the training:
 
@@ -326,6 +328,4 @@ If you encounter issues during the training:
 
 ---
 
-**Happy Learning!** 🎉
-
-This repository provides a safe environment to experiment with Git commands and learn version control best practices. Don't be afraid to make mistakes – that's how we learn!
+This repository provides a safe environment to experiment with Git commands and learn version control best practices. Experimentation and learning from mistakes is encouraged as part of the training process.
