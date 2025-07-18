@@ -87,9 +87,9 @@ git diff HEAD~1
 **Objective**: Understand branching strategies and merge operations.
 
 **Branches Available**:
-- `main`: Stable production code
-- `feature/branch-1`: New inventory tracking feature (contains a bug)
-- `bugfix/branch-1`: Critical bug fix for main branch
+- `main`: Stable production code (contains a memory leak bug in rental processing)
+- `feature/inventory-utilization-bug`: New inventory tracking feature (contains a division by zero bug)
+- `bugfix/memory-leak-fix`: Critical bug fix for memory leak in main branch
 
 **Tasks**:
 1. Switch between different branches
@@ -101,9 +101,9 @@ git diff HEAD~1
 **Commands to Practice**:
 ```bash
 git checkout main
-git checkout feature/branch-1
-git diff main..feature/branch-1
-git merge feature/branch-1
+git checkout feature/inventory-utilization-bug
+git diff main..feature/inventory-utilization-bug
+git merge feature/inventory-utilization-bug
 git rebase main
 git log --oneline --graph --all
 ```
@@ -112,7 +112,7 @@ git log --oneline --graph --all
 
 **Objective**: Learn to identify and resolve merge conflicts.
 
-**Setup**: The `feature/branch-1` and `bugfix/branch-1` branches have conflicting changes that will require manual resolution.
+**Setup**: The `feature/inventory-utilization-bug` and `bugfix/memory-leak-fix` branches have conflicting changes that will require manual resolution.
 
 **Tasks**:
 1. Attempt to merge conflicting branches
@@ -124,7 +124,7 @@ git log --oneline --graph --all
 **Conflict Resolution Process**:
 ```bash
 git checkout main
-git merge feature/branch-1
+git merge feature/inventory-utilization-bug
 # Conflict occurs - edit conflicted files
 # Look for <<<<<<< HEAD, =======, and >>>>>>> markers
 git add resolved-file.py
@@ -232,15 +232,22 @@ The repository includes a GitHub Actions workflow that automatically:
 
 The repository contains intentional issues in different branches to facilitate learning:
 
-### In `feature/branch-1`:
-- **Bug**: Division by zero error in inventory calculation
+### In `feature/inventory-utilization-bug`:
+- **Bug**: Division by zero error in inventory utilization calculation
 - **Location**: `utils.py` in the `calculate_inventory_utilization()` function
 - **Learning Goal**: Practice debugging and fixing issues in feature branches
+- **Trigger**: Occurs when calculating utilization on an empty car inventory
 
 ### In `main` branch:
-- **Bug**: Memory leak in car allocation
-- **Location**: `car_rental.py` in the rental processing
-- **Learning Goal**: Understand how bugs can exist in production code
+- **Bug**: Memory leak in rental processing logic
+- **Location**: `car_rental.py` in the `rent_car()` method
+- **Learning Goal**: Understand how bugs can exist in production code and impact performance
+- **Impact**: Creates excessive memory usage that grows with each rental transaction
+
+### In `bugfix/memory-leak-fix`:
+- **Fix**: Resolves the memory leak present in main branch
+- **Location**: `car_rental.py` with cleaned up rental processing
+- **Learning Goal**: Practice applying fixes and understanding proper resource management
 
 ## Learning Resources
 

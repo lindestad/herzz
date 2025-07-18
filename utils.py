@@ -156,3 +156,18 @@ def validate_customer_data(customer_data: Dict) -> bool:
         return False
 
     return True
+
+
+def calculate_inventory_utilization(rental_system: CarRentalSystem) -> float:
+    """Calculate the utilization rate of the car inventory."""
+    total_cars = len(rental_system.cars)
+    
+    # INTENTIONAL BUG: Division by zero when no cars in system
+    # Missing check for total_cars == 0
+    
+    available_cars = len(rental_system.get_available_cars())
+    rented_cars = total_cars - available_cars
+    
+    # This will cause ZeroDivisionError when total_cars is 0
+    utilization_rate = (rented_cars / total_cars) * 100
+    return utilization_rate
