@@ -246,16 +246,16 @@ The repository contains intentional issues in different branches to facilitate l
 
 ### Git Commands Quick Reference
 
-| Command | Description |
-|---------|-------------|
-| `git status` | Show working tree status |
-| `git log --oneline --graph` | Show commit history graphically |
-| `git branch -a` | List all branches |
-| `git checkout <branch>` | Switch to branch |
-| `git merge <branch>` | Merge branch into current |
-| `git rebase <branch>` | Rebase current branch onto another |
-| `git cherry-pick <commit>` | Apply specific commit |
-| `git stash` | Temporarily store changes |
+| Command                     | Description                        |
+| --------------------------- | ---------------------------------- |
+| `git status`                | Show working tree status           |
+| `git log --oneline --graph` | Show commit history graphically    |
+| `git branch -a`             | List all branches                  |
+| `git checkout <branch>`     | Switch to branch                   |
+| `git merge <branch>`        | Merge branch into current          |
+| `git rebase <branch>`       | Rebase current branch onto another |
+| `git cherry-pick <commit>`  | Apply specific commit              |
+| `git stash`                 | Temporarily store changes          |
 
 ### Best Practices Demonstrated
 
