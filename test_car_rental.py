@@ -3,9 +3,10 @@ Basic tests for the car rental system.
 """
 
 import unittest
-from car_rental import Car, Customer, Rental, CarRentalSystem
-from utils import validate_car_data, validate_customer_data
 from datetime import datetime
+
+from car_rental import Car, CarRentalSystem, Customer, Rental
+from utils import validate_car_data, validate_customer_data
 
 
 class TestCarRentalSystem(unittest.TestCase):

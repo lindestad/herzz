@@ -5,10 +5,10 @@ A simple car rental management system for training purposes.
 This module handles the core car rental operations.
 """
 
-import json
 import csv
+import json
 from datetime import datetime, timedelta
-from typing import List, Dict, Optional
+from typing import Dict, List, Optional
 
 
 class Car:

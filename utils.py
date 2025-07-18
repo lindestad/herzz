@@ -2,10 +2,11 @@
 Utility functions for the car rental system.
 """
 
-import json
 import csv
-from typing import List, Dict
-from car_rental import Car, Customer, CarRentalSystem
+import json
+from typing import Dict, List
+
+from car_rental import Car, CarRentalSystem, Customer
 
 
 def save_cars_to_json(cars: List[Car], filename: str) -> None:
