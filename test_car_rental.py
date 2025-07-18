@@ -3,7 +3,7 @@ Basic tests for the car rental system.
 """
 
 import unittest
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from car_rental import Car, CarRentalSystem, Customer, Rental
 from utils import validate_car_data, validate_customer_data
@@ -117,6 +117,88 @@ class TestCarRentalSystem(unittest.TestCase):
         self.assertIn("active_rentals", summary)
         self.assertIn("completed_rentals", summary)
         self.assertIn("total_revenue", summary)
+
+    def test_memory_leak_fix_cleanup_old_rentals(self):
+        """Test that old completed rentals are cleaned up to prevent memory leaks."""
+        self.rental_system.add_car(self.car)
+        self.rental_system.add_customer(self.customer)
+        
+        # Set a short retention period for testing
+        self.rental_system.rental_retention_days = 1
+        
+        # Create and complete a rental
+        rental = self.rental_system.rent_car("CUST001", "C001", 3)
+        self.assertIsNotNone(rental)
+        rental_id = rental.rental_id
+        
+        # Simulate the rental being old by modifying its end_date
+        # This simulates a rental that ended more than 1 day ago
+        old_end_date = datetime.now() - timedelta(days=2)
+        rental.end_date = old_end_date
+        
+        # Return the car - this should trigger cleanup
+        success = self.rental_system.return_car(rental_id)
+        self.assertTrue(success)
+        
+        # The old rental should have been cleaned up
+        # Since the rental ended 2 days ago but retention is 1 day
+        self.assertEqual(len(self.rental_system.rentals), 0, 
+                        "Old completed rental should be cleaned up to prevent memory leak")
+
+    def test_memory_leak_fix_recent_rentals_preserved(self):
+        """Test that recent completed rentals are preserved."""
+        self.rental_system.add_car(self.car)
+        self.rental_system.add_customer(self.customer)
+        
+        # Set retention period
+        self.rental_system.rental_retention_days = 30
+        
+        # Create and complete a rental
+        rental = self.rental_system.rent_car("CUST001", "C001", 3)
+        self.assertIsNotNone(rental)
+        rental_id = rental.rental_id
+        
+        # This rental is recent (default end_date is start_date + days)
+        # Return the car
+        success = self.rental_system.return_car(rental_id)
+        self.assertTrue(success)
+        
+        # The recent rental should still be in the system
+        self.assertEqual(len(self.rental_system.rentals), 1, 
+                        "Recent completed rental should be preserved")
+        self.assertTrue(self.rental_system.rentals[0].returned)
+
+    def test_cleanup_old_rentals_method(self):
+        """Test the cleanup_old_rentals method directly."""
+        self.rental_system.add_car(self.car)
+        self.rental_system.add_customer(self.customer)
+        
+        # Set short retention period
+        self.rental_system.rental_retention_days = 1
+        
+        # Create multiple rentals
+        rental1 = self.rental_system.rent_car("CUST001", "C001", 1)
+        self.assertIsNotNone(rental1)
+        
+        # Make rental1 old and completed
+        rental1.returned = True
+        rental1.end_date = datetime.now() - timedelta(days=2)
+        
+        # Add the car back for second rental
+        self.car.available = True
+        rental2 = self.rental_system.rent_car("CUST001", "C001", 1) 
+        self.assertIsNotNone(rental2)
+        
+        # rental2 is active (not returned)
+        self.assertEqual(len(self.rental_system.rentals), 2)
+        
+        # Run cleanup
+        removed_count = self.rental_system.cleanup_old_rentals()
+        
+        # Should remove 1 old completed rental, keep 1 active rental
+        self.assertEqual(removed_count, 1)
+        self.assertEqual(len(self.rental_system.rentals), 1)
+        self.assertEqual(self.rental_system.rentals[0], rental2)  # Active rental preserved
 
 
 class TestValidation(unittest.TestCase):

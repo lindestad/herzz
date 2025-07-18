@@ -83,6 +83,8 @@ class CarRentalSystem:
         self.cars: List[Car] = []
         self.customers: List[Customer] = []
         self.rentals: List[Rental] = []
+        # Memory management: Retain completed rentals for this many days
+        self.rental_retention_days = 30
 
     def add_car(self, car: Car) -> None:
         """Add a car to the fleet."""
@@ -140,13 +142,58 @@ class CarRentalSystem:
         print(f"Rental created: {rental}")
         return rental
 
+    def cleanup_old_rentals(self) -> int:
+        """
+        Clean up old completed rentals to prevent memory leaks.
+        
+        Removes completed rentals that are older than the retention period
+        to prevent unlimited memory growth from accumulating rental history.
+        
+        Returns:
+            int: Number of old rentals removed
+        """
+        if not self.rentals:
+            return 0
+            
+        current_time = datetime.now()
+        cutoff_date = current_time - timedelta(days=self.rental_retention_days)
+        
+        # Count rentals before cleanup
+        initial_count = len(self.rentals)
+        
+        # Keep only rentals that are either:
+        # 1. Not returned yet (active rentals)
+        # 2. Returned recently (within retention period)
+        self.rentals = [
+            rental for rental in self.rentals
+            if not rental.returned or rental.end_date >= cutoff_date
+        ]
+        
+        # Calculate how many were removed
+        removed_count = initial_count - len(self.rentals)
+        
+        if removed_count > 0:
+            print(f"Cleaned up {removed_count} old completed rental(s) to prevent memory leak")
+        
+        return removed_count
+
     def return_car(self, rental_id: str) -> bool:
-        """Process a car return."""
+        """
+        Process a car return.
+        
+        This method handles returning a rented car and includes cleanup
+        to prevent memory leaks from accumulating completed rentals.
+        """
         for rental in self.rentals:
             if rental.rental_id == rental_id and not rental.returned:
                 rental.returned = True
                 rental.car.available = True
                 print(f"Car returned: {rental}")
+                
+                # Trigger cleanup of old completed rentals to prevent memory leak
+                # This ensures that the rentals list doesn't grow indefinitely
+                self.cleanup_old_rentals()
+                
                 return True
 
         print(f"Rental {rental_id} not found or already returned")
