@@ -6,6 +6,26 @@
 
 The HERZZ Car Rental System is a Python-based car rental management system designed specifically for Git training workshops. The system simulates real-world car rental operations and provides a practical environment for learning Git concepts, workflows, and collaboration techniques.
 
+## Recent Improvements
+
+### Memory Leak Fix (Latest)
+
+**Issue**: The car rental system had a memory leak where completed rentals accumulated indefinitely in memory, causing unlimited memory growth in long-running applications.
+
+**Solution**: Implemented automatic cleanup of old completed rentals:
+- Added configurable retention period (default: 30 days)
+- Completed rentals older than the retention period are automatically removed
+- Active rentals and recent completed rentals are preserved
+- Cleanup is triggered automatically when cars are returned
+
+**Technical Details**:
+- New `cleanup_old_rentals()` method in `CarRentalSystem` class
+- Enhanced `return_car()` method to trigger cleanup
+- Configurable via `rental_retention_days` attribute
+- Comprehensive unit tests to validate the fix
+
+This ensures the system can run indefinitely without consuming unlimited memory while maintaining recent rental history for business operations.
+
 ## Features
 
 - **Car Management**: Add, track, and manage rental car inventory
@@ -238,9 +258,10 @@ The repository contains intentional issues in different branches to facilitate l
 - **Learning Goal**: Practice debugging and fixing issues in feature branches
 
 ### In `main` branch:
-- **Bug**: Memory leak in car allocation
+- **Bug**: Memory leak in car allocation (FIXED)
 - **Location**: `car_rental.py` in the rental processing
-- **Learning Goal**: Understand how bugs can exist in production code
+- **Fix**: Added automatic cleanup of old completed rentals to prevent unlimited memory growth
+- **Learning Goal**: Understand how bugs can exist in production code and how to implement memory management solutions
 
 ## Learning Resources
 
