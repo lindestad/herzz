@@ -96,6 +96,7 @@ class TestCarRentalSystem(unittest.TestCase):
         self.rental_system.add_customer(self.customer)
 
         rental = self.rental_system.rent_car("CUST001", "C001", 3)
+        self.assertIsNotNone(rental, "rent_car should return a Rental object")
         rental_id = rental.rental_id
 
         success = self.rental_system.return_car(rental_id)
@@ -156,4 +157,4 @@ class TestValidation(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    unittest.main()
+    unittest.main()  # type: ignore[no-untyped-call]
